@@ -40,8 +40,8 @@ description: This skill should be used when users ask how to use acts and the co
 
 ## Escalate only when needed
 - Start from topic skill primary references.
-- If those references are insufficient, open `<topic-skill>/references/doc_map.md` inside the selected topic skill directory.
-- If documentation still leaves ambiguity, open `<topic-skill>/references/source_map.md` and inspect the suggested source entry points.
+- If those references are insufficient, open the selected topic skill's `references/` directory and read its `doc_map.md`.
+- If documentation still leaves ambiguity, open the same `references/` directory and inspect its `source_map.md` entry points.
 - Use targeted symbol search while inspecting source (e.g., `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`).
 
 ## Source directories for deeper inspection

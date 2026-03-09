@@ -7,13 +7,14 @@ description: This skill should be used when users ask about inputs and modeling 
 
 ## High-Signal Playbook
 ### Route conditions
-- Use this skill for detector geometry/material setup, field/model choices, and input configuration integrity.
+- Use this skill for detector geometry/material setup, track/event-data structures, field/model choices, and input configuration integrity.
 - Route to `acts-simulation-workflows` for full end-to-end run control and restart logic.
 - Route to `acts-examples-and-tutorials` for script selection and usage walkthroughs.
 - Route to `acts-groups` when the question is purely algorithm-family internals (seeding, track finding, vertexing APIs).
 
 ### Triage questions
 - Which detector description path is used (ODD/DD4hep/GeoModel/TGeo/custom)?
+- Is the issue in geometry construction/material mapping or in track/event-data containers and parameter conventions?
 - Are you mapping material to surfaces, volumes, or both?
 - Do you already have a geometry JSON map, or do you need to generate/edit one?
 - What map format do you need (`.json`, `.cbor`, ROOT side products)?
@@ -46,6 +47,7 @@ python3 Examples/Scripts/Python/material_validation.py
 - Too-large `mappingStep` biases volume mapping; keep it small versus bin size (same doc).
 - Reusing cached surface info after changing mapped surfaces gives inconsistent output; disable cache when mapping topology changes.
 - Validation mismatches can come from different generation distributions (`z0`/`d0`, `theta` vs `eta`); align settings before judging quality.
+- Track-EDM debugging often comes from mixing free/bound parameter conventions; cross-check with the EventData tests before changing storage code.
 - ODD flows fail if detector submodule/config is missing; initialize/update submodules before running scripts.
 
 ### Convergence/validation checks
@@ -53,12 +55,20 @@ python3 Examples/Scripts/Python/material_validation.py
 - Mapping run emits expected outputs (`material-map.json`/`.cbor` and material-track ROOT files).
 - Surface/volume validation plots are stable across reruns with fixed seeds and event counts.
 - Material ratio plots are near-unity in tuned detector regions and improve with binning iterations.
+- Track containers/proxies expose the expected reference-surface and parameter state in the nearest EventData unit tests.
 - Chosen field/material provider pairing is consistent with the propagation path under study.
 
 ### Source-code entry links
+- `Examples/Scripts/Python/geometry.py` (detector/geometry inventory and JSON emission).
+- `Examples/Scripts/Python/geomodel.py` (GeoModel-to-ACTS geometry conversion path).
+- `Examples/Scripts/Python/blueprint.py` (blueprint geometry authoring path).
 - `Examples/Scripts/Python/material_recording.py` (Geant4 material-track production path).
 - `Examples/Scripts/Python/material_mapping.py` (surface/volume mapper configuration and writer wiring).
 - `Core/include/Acts/Material/TrackingGeometryMaterial.hpp` (material model interfaces).
+- `Core/include/Acts/EventData/GenericBoundTrackParameters.hpp` (bound parameter conventions and creation helpers).
+- `Core/include/Acts/EventData/TrackStateProxy.hpp` (track-state proxy semantics for current Track EDM).
+- `Core/include/Acts/EventData/AnyTrackStateProxy.hpp` (type-erased track-state access for mixed containers).
+- `Core/include/Acts/EventData/TrackContainer.hpp` (high-level track container and proxy entry point).
 - `Core/src/Geometry/MaterialDesignatorBlueprintNode.cpp` (material assignment on geometry blueprint nodes).
 - `Plugins/Json/src/MaterialMapJsonConverter.cpp` (JSON material map conversion path).
 - `Plugins/Root/src/RootMaterialMapIo.cpp` (ROOT material map IO path).
@@ -109,14 +119,28 @@ python3 Examples/Scripts/Python/material_validation.py
 - `codegen`
 
 ## Source entry points for unresolved issues
+- `Examples/Scripts/Python/geometry.py`
+- `Examples/Scripts/Python/geomodel.py`
+- `Examples/Scripts/Python/blueprint.py`
 - `Examples/Scripts/Python/material_recording.py`
 - `Examples/Scripts/Python/material_mapping.py`
 - `Core/include/Acts/Material/TrackingGeometryMaterial.hpp`
+- `Core/include/Acts/EventData/GenericBoundTrackParameters.hpp`
+- `Core/include/Acts/EventData/TrackStateProxy.hpp`
+- `Core/include/Acts/EventData/AnyTrackStateProxy.hpp`
+- `Core/include/Acts/EventData/MultiComponentTrackParameters.hpp`
+- `Core/include/Acts/EventData/TrackContainer.hpp`
+- `Core/include/Acts/EventData/MultiTrajectory.hpp`
+- `Core/include/Acts/Geometry/BlueprintOptions.hpp`
+- `Core/include/Acts/Geometry/ContainerBlueprintNode.hpp`
 - `Plugins/Json/src/MaterialMapJsonConverter.cpp`
 - `Plugins/Root/src/RootMaterialMapIo.cpp`
 - `Plugins/Json/include/ActsPlugins/Json/GeometryHierarchyMapJsonConverter.hpp`
 - `Plugins/GeoModel/src/GeoModelMaterialConverter.cpp`
 - `Plugins/GeoModel/include/ActsPlugins/GeoModel/GeoModelMaterialConverter.hpp`
+- `Tests/UnitTests/Core/EventData/AnyTrackStateProxyTests.cpp`
+- `Tests/UnitTests/Core/EventData/MultiTrajectoryTests.cpp`
+- `Tests/UnitTests/Plugins/Json/GeometryHierarchyMapJsonConverterTests.cpp`
 - `Core/src/Geometry/MaterialDesignatorBlueprintNode.cpp`
 - `Core/src/Geometry/MaterialDesignator.hpp`
 - `Core/include/Acts/Geometry/MaterialDesignatorBlueprintNode.hpp`

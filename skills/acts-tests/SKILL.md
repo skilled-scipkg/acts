@@ -86,10 +86,18 @@ pytest -q Python/Examples/tests/test_material.py
 - `Tests/UnitTests/Core/TrackFinding/CombinatorialKalmanFilterTests.cpp`
 - `Tests/UnitTests/Core/Propagator/KalmanExtrapolatorTests.cpp`
 - `Tests/UnitTests/Core/Material/MaterialValidaterTests.cpp`
+- `Tests/UnitTests/Core/EventData/AnyTrackStateProxyTests.cpp`
+- `Tests/UnitTests/Core/EventData/MultiTrajectoryTests.cpp`
+- `Tests/UnitTests/Plugins/Json/GeometryHierarchyMapJsonConverterTests.cpp`
+- `Tests/UnitTests/Plugins/Root/RootMaterialMapIoTests.cpp`
 - `Python/Examples/tests/test_examples.py`
 - `Python/Examples/tests/test_propagation.py`
 - `Python/Examples/tests/test_material.py`
 - `Core/include/Acts/Seeding/SeedFinder.hpp`
 - `Core/include/Acts/TrackFinding/CombinatorialKalmanFilter.hpp`
 - `Core/include/Acts/Propagator/Propagator.hpp`
+- `Core/include/Acts/EventData/TrackStateProxy.hpp`
+- `Core/include/Acts/EventData/MultiTrajectory.hpp`
+- `Plugins/Json/include/ActsPlugins/Json/GeometryHierarchyMapJsonConverter.hpp`
+- `Plugins/Root/src/RootMaterialMapIo.cpp`
 - Prefer targeted source search (for example: `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`).

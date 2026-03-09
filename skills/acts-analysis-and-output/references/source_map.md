@@ -30,6 +30,7 @@ Use this map only after exhausting the topic docs in `doc_map.md`.
 ## Fast source navigation
 - `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`
 - `rg -n "class|def|struct|namespace" Alignment Core Fatras Plugins Python codegen`
+- `rg -n "Visualization|View3D|MultiTrajectory|Writer|Reader" Core/include Core/src Examples/Framework/src Examples/Io Tests/UnitTests/Core/Visualization Python/Examples/tests`
 - If a doc mentions a function/class, search that exact symbol first, then inspect nearby implementation files.
 
 ## Suggested source entry points
@@ -52,6 +53,10 @@ Use this map only after exhausting the topic docs in `doc_map.md`.
 - `Core/include/Acts/EventData/MultiTrajectoryBackendConcept.hpp` | score: 7 | matched tokens: core, trajectory
 - `Core/include/Acts/EventData/MultiTrajectory.hpp` | score: 7 | matched tokens: core, trajectory
 - `Core/include/Acts/EventData/detail/MultiTrajectoryTestsCommon.hpp` | score: 7 | matched tokens: core, trajectory
+- `Examples/Framework/src/Root/MuonVisualization.cpp` | score: 7 | matched tokens: visualization
+- `Examples/Io/EDM4hep/src/EDM4hepMultiTrajectoryOutputConverter.cpp` | score: 7 | matched tokens: output, trajectory
+- `Tests/UnitTests/Core/Visualization/EventDataView3DTests.cpp` | score: 7 | matched tokens: output, visualization
+- `Tests/UnitTests/Core/Visualization/Visualization3DTests.cpp` | score: 7 | matched tokens: output, visualization
 - `Core/ActsVersion.hpp.in` | score: 5 | matched tokens: core
 - `Python/Core/python/__init__.py` | score: 5 | matched tokens: core
 - `Core/CMakeLists.txt` | score: 5 | matched tokens: core

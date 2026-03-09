@@ -16,6 +16,9 @@ Use this map only after exhausting the topic docs in `doc_map.md`.
 - `derivation`
 - `equation`
 - `fitting`
+- `gsf`
+- `gx2f`
+- `kalman`
 - `formalism`
 - `method`
 - `methods`
@@ -25,6 +28,7 @@ Use this map only after exhausting the topic docs in `doc_map.md`.
 - `track`
 
 ## Fast source navigation
+- `rg -n "KalmanFitter|GaussianSumFitter|GlobalChiSquareFitter|GainMatrix|BetheHeitler|MbfSmoother" Core/include/Acts/TrackFitting Core/src/TrackFitting Tests/UnitTests/Core/TrackFitting`
 - `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`
 - `rg -n "class|def|struct|namespace" Alignment Core Fatras Plugins Python codegen`
 - If a doc mentions a function/class, search that exact symbol first, then inspect nearby implementation files.
@@ -60,3 +64,8 @@ Use this map only after exhausting the topic docs in `doc_map.md`.
 - `Core/include/Acts/TrackFitting/detail/KalmanGlobalCovariance.hpp` | score: 9 | matched tokens: core, fitting, track
 - `Core/include/Acts/TrackFitting/detail/GsfUtils.hpp` | score: 9 | matched tokens: core, fitting, track
 - `Core/include/Acts/TrackFitting/detail/GsfComponentMerging.hpp` | score: 9 | matched tokens: core, fitting, track
+- `Tests/UnitTests/Core/TrackFitting/KalmanFitterTests.cpp` | score: 9 | matched tokens: fitting, kalman, track
+- `Tests/UnitTests/Core/TrackFitting/GsfTests.cpp` | score: 9 | matched tokens: fitting, gsf, track
+- `Tests/UnitTests/Core/TrackFitting/Gx2fTests.cpp` | score: 9 | matched tokens: fitting, gx2f, track
+- `Tests/UnitTests/Core/TrackFitting/GainMatrixUpdaterTests.cpp` | score: 9 | matched tokens: fitting, kalman, track
+- `Tests/UnitTests/Core/TrackFitting/GainMatrixSmootherTests.cpp` | score: 9 | matched tokens: fitting, kalman, track

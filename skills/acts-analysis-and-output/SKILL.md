@@ -90,9 +90,13 @@ pytest -q Python/Examples/tests/test_reader.py
 - `Core/src/Visualization/GeometryView3D.cpp`
 - `Core/src/Visualization/ObjVisualization3D.cpp`
 - `Core/src/Visualization/EventDataView3D.cpp`
+- `Examples/Framework/src/Root/MuonVisualization.cpp`
 - `Core/include/Acts/Visualization/ViewConfig.hpp`
 - `Core/include/Acts/EventData/MultiTrajectory.hpp`
 - `Core/src/EventData/VectorMultiTrajectory.cpp`
+- `Examples/Io/EDM4hep/src/EDM4hepMultiTrajectoryOutputConverter.cpp`
+- `Tests/UnitTests/Core/Visualization/EventDataView3DTests.cpp`
+- `Tests/UnitTests/Core/Visualization/Visualization3DTests.cpp`
 - `Python/Examples/tests/test_writer.py`
 - `Python/Examples/tests/test_reader.py`
 - Prefer targeted source search (for example: `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`).

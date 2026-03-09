@@ -10,6 +10,7 @@ description: This skill should be used when users ask about examples and tutoria
 - Use this skill for runnable example selection, quick adaptation, and expected outputs.
 - Route build/configuration blockers to `acts-build-and-install`.
 - Route algorithm tuning depth (beyond example wiring) to `acts-simulation-workflows` or `acts-groups`.
+- Route GBTS/blueprint or other opt-in feature questions to `acts-experimental`.
 - Route Python binding internals/API surface to `acts-api-and-scripting`.
 
 ### Triage questions
@@ -31,7 +32,7 @@ description: This skill should be used when users ask about examples and tutoria
 ### Minimal working example
 ```bash
 source build/python/setup.sh
-export ODD_PATH=/path/to/OpenDataDetector
+export ODD_PATH=thirdparty/OpenDataDetector
 
 python3 Examples/Scripts/Python/full_chain_odd.py \
   -n 5 \
@@ -66,6 +67,7 @@ Examples/Algorithms/Digitization/scripts/smearing-config.py \
 
 ### Source-code entry links
 - `Examples/Scripts/Python/full_chain_odd.py` (canonical end-to-end ODD script).
+- `Examples/Scripts/Python/full_chain_itk_Gbts.py` (ITk GBTS example path for newer seeding flows).
 - `Examples/Scripts/Python/material_recording.py` and `Examples/Scripts/Python/material_mapping.py` (material flow examples).
 - `Examples/Algorithms/Digitization/scripts/smearing-config.py` (digitization config generator).
 - `Examples/Framework/src/Framework/Sequencer.cpp` (execution orchestration behavior).
@@ -116,6 +118,7 @@ Examples/Algorithms/Digitization/scripts/smearing-config.py \
 
 ## Source entry points for unresolved issues
 - `Examples/Scripts/Python/full_chain_odd.py`
+- `Examples/Scripts/Python/full_chain_itk_Gbts.py`
 - `Examples/Scripts/Python/material_recording.py`
 - `Examples/Scripts/Python/material_mapping.py`
 - `Examples/Algorithms/Digitization/scripts/smearing-config.py`

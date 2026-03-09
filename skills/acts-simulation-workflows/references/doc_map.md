@@ -14,6 +14,6 @@ Total docs grouped in this topic: 5
 ## File inventory
 - `Examples/Scripts/GsfDebugger/README.md` | title: GSF Debugger | headings: GSF Debugger; Usage; Further reading
 - `docs/old/plugins/MLAlgorithms.md` | title: Machine learning algorithms | headings: Machine learning algorithms; Onnx plugin; OnnxRuntimeBase
-- `docs/old/examples/python_bindings.rst` | title: ... | headings: ...; Python bindings for the Examples; Python based example scripts
-- `docs/pages/contributing/run_formatting.md` | title: C++ formatting: `clang-format` | headings: C++ formatting: `clang-format`; Python formatting; CI/check_format $SOURCE_DIR
+- `docs/pages/tracking.md` | title: Charged particle detection {#charged-particle-detection} | headings: Charged particle detection {#charged-particle-detection}; Track parametrization {#track-parametrization}; Particle propagation {#particle-propagation}
 - `docs/old/examples/howto/run_ckf_auto_tuning.rst` | title: ACTS Tutorial on Auto-Tuning in CombinatorialKalmanFilter (CKF) | headings: ACTS Tutorial on Auto-Tuning in CombinatorialKalmanFilter (CKF); Prerequisites; How auto-tuning works
+- `docs/old/examples/full_chain_odd.md` | title: Walkthrough of the OpenDataDetector full chain example | headings: Walkthrough of the OpenDataDetector full chain example

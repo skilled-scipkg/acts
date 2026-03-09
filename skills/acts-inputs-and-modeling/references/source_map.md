@@ -11,70 +11,61 @@ Generated from source roots:
 Use this map only after exhausting the topic docs in `doc_map.md`.
 
 ## Topic query tokens
-- `add`
-- `algorithm`
-- `analysis`
-- `apps`
-- `axis`
-- `basis`
-- `boundary`
-- `cheatsheet`
-- `concepts`
-- `construction`
-- `contribution`
-- `core`
-- `eventdata`
-- `field`
-- `force`
-- `forcefield`
-- `formats`
 - `geometry`
-- `geomodel`
-- `grid`
-- `groups`
-- `hierarchy`
-- `howto`
-- `input`
-- `inputs`
-- `json`
-- `map`
-- `mapping`
 - `material`
-- `misc`
+- `geomodel`
+- `blueprint`
+- `hierarchy_map`
+- `eventdata`
+- `track_parameters`
+- `track_container`
+- `surface`
+- `volume_builder`
 
 ## Fast source navigation
-- `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`
-- `rg -n "class|def|struct|namespace" Alignment Core Fatras Plugins Python codegen`
-- If a doc mentions a function/class, search that exact symbol first, then inspect nearby implementation files.
+- `rg -n "geometry.py|geomodel.py|blueprint.py|material_(recording|mapping|validation)" Examples/Scripts/Python`
+- `rg -n "GenericBoundTrackParameters|MultiComponentTrackParameters|TrackContainer|TrackProxy|TrackStateProxy|AnyTrackStateProxy|MultiTrajectory" Core/include/Acts/EventData`
+- `rg -n "BlueprintOptions|ContainerBlueprintNode|GeometryHierarchyMap|CuboidVolumeBuilder|CylinderVolumeBuilder" Core/include/Acts/Geometry Core/src/Geometry`
+- `rg -n "MaterialMapJsonConverter|RootMaterialMapIo|GeoModelMaterialConverter" Plugins/Json Plugins/Root Plugins/GeoModel`
+- `rg -n "TrackTests|AnyTrackProxyTests|AnyTrackStateProxyTests|MultiTrajectoryTests|BoundTrackParametersTests|GeometryHierarchyMapTests|GeometryHierarchyMapJsonConverterTests|CylinderVolumeBuilderTests|CuboidVolumeBuilderTests" Tests/UnitTests/Core Tests/UnitTests/Plugins`
 
 ## Suggested source entry points
-- `Core/include/Acts/Material/TrackingGeometryMaterial.hpp` | score: 20 | matched tokens: core, geometry, material, tracking
-- `Plugins/Json/include/ActsPlugins/Json/GeometryHierarchyMapJsonConverter.hpp` | score: 20 | matched tokens: geometry, hierarchy, json, map, plugins
-- `Plugins/GeoModel/src/GeoModelMaterialConverter.cpp` | score: 18 | matched tokens: geomodel, material, model, plugins
-- `Plugins/GeoModel/include/ActsPlugins/GeoModel/GeoModelMaterialConverter.hpp` | score: 18 | matched tokens: geomodel, material, model, plugins
-- `Core/src/Geometry/MaterialDesignatorBlueprintNode.cpp` | score: 18 | matched tokens: core, geometry, material
-- `Core/src/Geometry/MaterialDesignator.hpp` | score: 18 | matched tokens: core, geometry, material
-- `Core/include/Acts/Geometry/MaterialDesignatorBlueprintNode.hpp` | score: 18 | matched tokens: core, geometry, material
-- `Core/include/Acts/Geometry/GeometryHierarchyMap.hpp` | score: 18 | matched tokens: core, geometry, hierarchy, map
-- `Core/include/Acts/Geometry/BoundarySurfaceT.hpp` | score: 18 | matched tokens: boundary, core, geometry
-- `Core/include/Acts/Geometry/BoundarySurfaceFace.hpp` | score: 18 | matched tokens: boundary, core, geometry
-- `Plugins/Json/include/ActsPlugins/Json/ITrackingGeometryJsonDecorator.hpp` | score: 18 | matched tokens: geometry, json, plugins, tracking
-- `Plugins/Root/src/RootMaterialMapIo.cpp` | score: 16 | matched tokens: map, material, plugins, root
-- `Plugins/Root/include/ActsPlugins/Root/RootMaterialMapIo.hpp` | score: 16 | matched tokens: map, material, plugins, root
-- `Plugins/Root/src/TGeoMaterialConverter.cpp` | score: 16 | matched tokens: material, plugins, root
-- `Plugins/Json/src/MaterialMapJsonConverter.cpp` | score: 16 | matched tokens: json, map, material, plugins
-- `Plugins/Json/src/GeometryIdentifierJsonConverter.cpp` | score: 16 | matched tokens: geometry, json, plugins
-- `Core/src/Geometry/TrackingGeometryVisitor.cpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/src/Geometry/TrackingGeometryPrintVisitor.cpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/src/Geometry/TrackingGeometryBuilder.cpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/src/Geometry/TrackingGeometry.cpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/include/Acts/Geometry/TrackingGeometryVisitor.hpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/include/Acts/Geometry/TrackingGeometryBuilder.hpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/include/Acts/Geometry/TrackingGeometry.hpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/include/Acts/Geometry/ITrackingGeometryBuilder.hpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Plugins/Root/include/ActsPlugins/Root/TGeoMaterialConverter.hpp` | score: 16 | matched tokens: material, plugins, root
-- `Plugins/Json/include/ActsPlugins/Json/MaterialMapJsonConverter.hpp` | score: 16 | matched tokens: json, map, material, plugins
-- `Plugins/Json/include/ActsPlugins/Json/GeometryJsonKeys.hpp` | score: 16 | matched tokens: geometry, json, plugins
-- `Plugins/Json/include/ActsPlugins/Json/GeometryIdentifierJsonConverter.hpp` | score: 16 | matched tokens: geometry, json, plugins
-- `Core/include/Acts/Geometry/detail/TrackingGeometryPrintVisitor.hpp` | score: 16 | matched tokens: core, geometry, tracking
-- `Core/src/Geometry/TrackingVolumeArrayCreator.cpp` | score: 16 | matched tokens: core, geometry, tracking
+- `Examples/Scripts/Python/geometry.py` | detector inventory and JSON geometry export.
+- `Examples/Scripts/Python/geomodel.py` | GeoModel conversion path and blueprint-to-builder handoff.
+- `Examples/Scripts/Python/blueprint.py` | minimal blueprint geometry authoring example.
+- `Examples/Scripts/Python/material_recording.py` | geantino material-track production.
+- `Examples/Scripts/Python/material_mapping.py` | surface and volume material mapping driver.
+- `Core/include/Acts/Material/TrackingGeometryMaterial.hpp` | top-level material interfaces on tracking geometry.
+- `Core/include/Acts/Geometry/GeometryHierarchyMap.hpp` | geometry hierarchy addressing primitives.
+- `Core/include/Acts/Geometry/BlueprintOptions.hpp` | blueprint build options and validation.
+- `Core/include/Acts/Geometry/ContainerBlueprintNode.hpp` | hierarchical geometry container node.
+- `Core/include/Acts/Geometry/ApproachDescriptor.hpp` | layer and approach-surface association.
+- `Core/include/Acts/Geometry/CuboidVolumeBuilder.hpp` | cuboid volume construction interface.
+- `Core/include/Acts/Geometry/CylinderVolumeBuilder.hpp` | cylindrical volume construction interface.
+- `Core/include/Acts/Geometry/CylinderVolumeHelper.hpp` | helper utilities for layered tracking volumes.
+- `Core/include/Acts/Geometry/DetectorElementBase.hpp` | detector-element transform and thickness contract.
+- `Core/include/Acts/EventData/GenericBoundTrackParameters.hpp` | bound-parameter creation and reference-surface semantics.
+- `Core/include/Acts/EventData/TrackStateProxy.hpp` | per-state proxy access patterns in the current Track EDM.
+- `Core/include/Acts/EventData/AnyTrackStateProxy.hpp` | type-erased state proxy used across mixed trajectory backends.
+- `Core/include/Acts/EventData/MultiComponentTrackParameters.hpp` | multi-component track-parameter representation.
+- `Core/include/Acts/EventData/TrackContainer.hpp` | high-level track container API and mutation entry point.
+- `Core/include/Acts/EventData/TrackProxy.hpp` | proxy accessors for per-track state.
+- `Core/include/Acts/EventData/AnyTrackProxy.hpp` | type-erased track-proxy surface.
+- `Core/include/Acts/EventData/MultiTrajectory.hpp` | underlying multi-trajectory storage model.
+- `Plugins/Json/include/ActsPlugins/Json/GeometryHierarchyMapJsonConverter.hpp` | hierarchy-map JSON conversion.
+- `Plugins/Json/src/MaterialMapJsonConverter.cpp` | material-map JSON IO behavior.
+- `Plugins/Root/src/RootMaterialMapIo.cpp` | ROOT material-map IO behavior.
+- `Plugins/GeoModel/src/GeoModelMaterialConverter.cpp` | GeoModel material-conversion path.
+- `Core/src/Geometry/MaterialDesignator.hpp` | internal blueprint material-designator helper.
+- `Tests/UnitTests/Core/EventData/TrackTests.cpp` | track container and proxy behavior checks.
+- `Tests/UnitTests/Core/EventData/AnyTrackStateProxyTests.cpp` | type-erased state-proxy behavior.
+- `Tests/UnitTests/Core/EventData/MultiTrajectoryTests.cpp` | multi-trajectory storage behavior.
+- `Tests/UnitTests/Core/EventData/AnyTrackProxyTests.cpp` | type-erased proxy behavior.
+- `Tests/UnitTests/Core/EventData/BoundTrackParametersTests.cpp` | bound-parameter semantics.
+- `Tests/UnitTests/Core/EventData/MultiComponentBoundTrackParametersTests.cpp` | multi-component parameter behavior.
+- `Tests/UnitTests/Core/Geometry/GeometryHierarchyMapTests.cpp` | hierarchy-map behavior checks.
+- `Tests/UnitTests/Plugins/Json/GeometryHierarchyMapJsonConverterTests.cpp` | hierarchy-map JSON conversion checks.
+- `Tests/UnitTests/Core/Geometry/CylinderVolumeBuilderTests.cpp` | cylindrical builder behavior.
+- `Tests/UnitTests/Core/Geometry/CuboidVolumeBuilderTests.cpp` | cuboid builder behavior.
+- `Python/Examples/tests/test_geometry.py` | Python geometry example regression checks.
+- `Python/Examples/tests/test_material.py` | material workflow regression checks.

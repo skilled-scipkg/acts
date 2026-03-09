@@ -20,7 +20,7 @@ description: This skill should be used when users ask about groups in acts; it p
 - Do they need C++ symbol anchors for deep dives?
 
 ### Canonical workflow
-1. Classify the request into a single dominant group and open the matching `docs/groups/<group>/index.md` page (or `docs/groups/<group>.md`) first.
+1. Classify the request into a single dominant group and open the exact repo-local page first: `docs/groups/pattern_recog/index.md`, `docs/groups/eventdata/index.md`, `docs/groups/detector_descr/index.md`, `docs/groups/dataprep/index.md`, `docs/groups/vertexing.md`, `docs/groups/propagation.md`, `docs/groups/track_fitting.md`, or `docs/groups/context.md`.
 2. Pull one adjacent group only if needed (for example `eventdata` + `pattern_recog`).
 3. Extract required invariants and warnings from docs before touching source.
 4. Map doc concepts to concrete symbols using `references/source_map.md` (vertexing, track helpers, event-data classes).

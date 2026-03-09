@@ -14,16 +14,17 @@ description: This skill should be used when users ask about api and scripting in
 
 ### Triage questions
 - Is the request about Python bindings (`acts`, `acts.examples`) or C++ API internals?
+- Is the call going through high-level helpers in `Python/Examples/python` or direct pybind classes?
 - Do you need symbol-level API mapping from Python to C++ implementation?
-- Is the issue import/setup, runtime behavior, or API contract mismatch?
+- Is the issue import/setup, missing module registration, runtime behavior, or API contract mismatch?
 - Are plugin bindings (`Root`, `Json`, `Geant4`, `Onnx`, `Gnn`) required?
 
 ### Canonical workflow
-1. Verify environment and imports first (`source <build>/python/setup.sh`, then `import acts`).
-2. Reproduce behavior with a minimal script call before inspecting internals.
-3. Map Python call-sites to binding files in `Python/Core/src` and `Python/Examples/src`.
-4. For plugin APIs, inspect matching bindings (for example `Python/Plugins/src/Json.cpp` and `Python/Plugins/src/Root.cpp`) and plugin C++ sources.
-5. Escalate to `references/source_map.md` for function-level source anchors when docs are insufficient.
+1. Verify that the bindings were built and the environment is sourced (`ActsPythonBindings`, then `source <build>/python/setup.sh`).
+2. Reproduce behavior with a minimal import or script call before inspecting internals.
+3. Map high-level helper usage to `Python/Examples/python` before dropping to the pybind translation units in `Python/Core/src`.
+4. For plugin APIs, inspect matching bindings (for example `Python/Plugins/src/Json.cpp`, `Python/Plugins/src/Root.cpp`, or `Python/Examples/src/plugins/Onnx.cpp`) and then the plugin C++ sources.
+5. Use the nearest `Python/Core/tests` or `Python/Examples/tests` case before escalating to `references/source_map.md`.
 
 ### Minimal working example
 ```bash
@@ -42,10 +43,12 @@ python3 Examples/Scripts/Python/ckf_tracks.py
 ```
 
 ### Pitfalls and fixes
-- Most import/runtime issues are environment setup errors, not API regressions.
+- Most import/runtime issues are unsourced `build/python/setup.sh` or missing `ActsPythonBindings` artifacts, not API regressions.
 - Plugin-specific classes are unavailable unless matching plugin bindings were built.
+- Helper wrappers in `Python/Examples/python` can hide defaults; compare them before concluding the C++ layer regressed.
 - Comparing Python and C++ behavior requires matching defaults (seeds, threads, geometry, field).
 - API drift across docs can happen; verify against current binding source files.
+- ROOT hash regressions are opt-in via `ROOT_HASH_CHECKS=ON`; do not expect them during a default `pytest` run.
 
 ### Convergence/validation checks
 - `import acts` and `import acts.examples` both succeed.
@@ -58,13 +61,13 @@ python3 Examples/Scripts/Python/ckf_tracks.py
 - Keep responses practical and symbol-oriented.
 
 ## Primary documentation references
+- `docs/pages/examples/python_bindings.md`
 - `docs/old/codeguide.md`
 - `docs/groups/logging.md`
 - `docs/old/core/magnetic_field.md`
 - `docs/old/core/misc/logging.md`
 - `docs/old/versioning.rst`
 - `docs/pages/versioning.md`
-- `docs/pages/examples/python_bindings.md`
 - `docs/old/examples/howto/gsf_debugger.md`
 - `docs/old/core/visualization/3d.md`
 - `Python/Examples/tests/root_file_hashes.txt`
@@ -96,14 +99,29 @@ python3 Examples/Scripts/Python/ckf_tracks.py
 
 ## Source entry points for unresolved issues
 - `Python/Core/src/CoreModuleEntry.cpp`
+- `Python/Core/python/__init__.py`
+- `Python/Core/setup.sh.in`
+- `Python/Examples/python/reconstruction.py`
 - `Python/Core/src/Propagation.cpp`
 - `Python/Core/src/Seeding.cpp`
 - `Python/Core/src/TrackFinding.cpp`
+- `Python/Core/src/Geometry.cpp`
 - `Python/Core/src/Visualization.cpp`
+- `Python/Core/src/MagneticField.cpp`
+- `Python/Core/src/Definitions.cpp`
 - `Python/Examples/src/ExamplesModuleEntry.cpp`
 - `Python/Examples/src/Framework.cpp`
+- `Python/Examples/src/plugins/Alignment.cpp`
+- `Python/Examples/src/plugins/Onnx.cpp`
 - `Python/Plugins/src/Root.cpp`
 - `Python/Plugins/src/Json.cpp`
+- `Python/Plugins/src/Geant4.cpp`
+- `Core/include/Acts/EventData/AnyTrackStateProxy.hpp`
+- `Core/include/Acts/EventData/TrackContainer.hpp`
+- `Core/include/Acts/EventData/TrackStateProxy.hpp`
+- `Core/include/Acts/EventData/MultiTrajectory.hpp`
 - `Plugins/Root/src/RootMaterialMapIo.cpp`
 - `Plugins/Json/src/MaterialMapJsonConverter.cpp`
+- `Tests/UnitTests/Core/EventData/AnyTrackStateProxyTests.cpp`
+- `Tests/UnitTests/Core/EventData/MultiTrajectoryTests.cpp`
 - Prefer targeted source search (for example: `rg -n "<symbol_or_keyword>" Alignment Core Fatras Plugins Python codegen`).
